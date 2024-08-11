@@ -94,4 +94,13 @@ function buscarProducto() {
 }
 buscarProducto();
 
+const ahora = new Date();
+const hora = ahora.getHours();
 
+if (hora < 12) {
+  console.log("Hola Sofia! espero que tengas un lindo día");
+} else if (hora < 18) {
+  console.log("Hola Sofia! espero que tu día esté siendo lindo");
+} else {
+  console.log("Hola Sofia! espero que hayas tenido un lindo día");
+}
