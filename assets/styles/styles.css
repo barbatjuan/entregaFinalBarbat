@@ -39,7 +39,21 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #424242;
+  background-color: #014719;
+  color: #f3f3f3e1;
+  border-radius: 10px;
+  border-width: 0px;
+  margin-bottom: 5px;
+}
+
+.eliminar-btn {
+  letter-spacing: 1px;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b0404;
   color: #f3f3f3e1;
   border-radius: 10px;
   border-width: 0px;

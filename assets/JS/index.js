@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function () {
         <p>Etapa de Vida: ${prod.etapaVida}</p>
         <p>Precio: $${prod.precio}</p>
         <button class="agregar-btn" data-id="${prod.id}">Agregar</button>
+        <button class="eliminar-btn" data-id="${prod.id}">Eliminar</button>
       `;
       productosContainer.appendChild(productoDiv);
     });
   }
-
   renderizarProductos();
 
   // evento busqueda
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     renderizarProductos(productosFiltrados);
   });
 
-  // gregar productos al carrito
+  // agregar productos al carrito
   productosContainer.addEventListener('click', (event) => {
     if (event.target && event.target.classList.contains('agregar-btn')) {
       let productoId = parseInt(event.target.getAttribute('data-id'), 10);
@@ -71,16 +71,20 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('carrito', JSON.stringify(carrito));
       }
     }
+
+    // eliminar producto del carrito de a uno
+    if (event.target && event.target.classList.contains('eliminar-btn')) {
+      let productoId = parseInt(event.target.getAttribute('data-id'), 10);
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+      // Encuentra el índice del primer producto con el id correspondiente
+      let index = carrito.findIndex(prod => prod.id === productoId);
+
+      if (index !== -1) {
+        // Elimina solo el producto en el índice encontrado
+        carrito.splice(index, 1);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+      }
+    }
   });
-
-  const ahora = new Date();
-  const hora = ahora.getHours();
-
-  if (hora < 12) {
-    console.log("Hola! espero que tengas un buen día");
-  } else if (hora < 18) {
-    console.log("Hola! espero que tu día esté siendo genial");
-  } else {
-    console.log("Hola! espero que hayas tenido un buen día");
-  }
 });
