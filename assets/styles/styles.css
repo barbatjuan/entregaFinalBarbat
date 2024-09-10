@@ -236,3 +236,160 @@ footer {
   color: #363636;
   font-weight: 600;
 }
+
+nav ul {
+  width: 100%;
+  height: 50px;
+  background-color: #363636e7;
+  list-style-type: none;
+  padding: 0;
+  margin: 0px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #bdbdbd;
+}
+
+.contact-form {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+/* Estilo para el formulario de contacto */
+.contact-form h2 {
+  font-family: "Poppins", sans-serif;
+  color: #363636;
+  margin-bottom: 15px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-family: "Poppins", sans-serif;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  font-family: "Poppins", sans-serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #920000;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #470000;
+}
+
+/* Estilo del contenedor del mapa */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del iframe dentro del contenedor */
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+/* Estilo del footer con la información de contacto en dos columnas */
+.footer-info {
+  background-color: #303030;
+  padding: 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #9b9b9b;
+  margin-top: 0px;
+}
+
+/* Contenedor para las columnas de información de contacto */
+.footer-info .contact-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-info .contact-details div {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .footer-info .contact-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-info .contact-details div {
+    margin-bottom: 20px;
+  }
+}
+
+.bodyContact {
+  background-image: url(https://www.whiskas.com.ar/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf4921/files/2022-11/eduquer-son-Chaton-comment-bien-eduquer-son-Chaton_0.jpg);
+  width: 100%;
+  height: 60%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.h2Contact {
+  font-family: "Poppins", sans-serif;
+  color: #bdbdbd;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 2rem;
+}
