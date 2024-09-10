@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     productosContainer.addEventListener('click', (event) => {
         if (event.target && event.target.classList.contains('agregar-btn')) {
             let productoId = parseInt(event.target.getAttribute('data-id'), 10);
-            let productoItem = producto.find(p => p.id === productoId); // Usa el mismo nombre para la variable
+            let productoItem = producto.find(p => p.id === productoId);
 
             if (productoItem) {
                 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
