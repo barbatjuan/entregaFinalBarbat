@@ -94,11 +94,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 localStorage.setItem('carrito', JSON.stringify(carrito));
 
-                // Mostrar SweetAlert para producto agregado
+                // producto agregado
                 Swal.fire({
                     title: 'Producto agregado',
                     text: `El producto ${productoItem.title} ha sido agregado al carrito.`,
                     icon: 'success',
+                    timer: 2000,
                     confirmButtonText: 'Cerrar',
                 });
             }
@@ -122,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     title: 'Producto eliminado',
                     text: `El producto ${productoEnCarrito.title} ha sido eliminado del carrito.`,
                     icon: 'warning',
+                    timer: 2000,
                     confirmButtonText: 'Cerrar',
                 });
             }
