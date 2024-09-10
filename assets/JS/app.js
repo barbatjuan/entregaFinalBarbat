@@ -98,8 +98,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     title: 'Producto agregado',
                     text: `El producto ${productoItem.title} ha sido agregado al carrito.`,
-                    icon: 'success',
-                    timer: 2000,
+                    imageUrl: './../../assets/images/okcat.png',
+                    imageWidth: 200,
+                    imageAlt: 'Un lindo gatito',
+                    timer: 1500,
                     confirmButtonText: 'Cerrar',
                 });
             }
@@ -122,8 +124,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     title: 'Producto eliminado',
                     text: `El producto ${productoEnCarrito.title} ha sido eliminado del carrito.`,
-                    icon: 'warning',
-                    timer: 2000,
+                    imageUrl: './../../assets/images/nocat.png',
+                    imageWidth: 200,
+                    imageAlt: 'Un lindo gatito',
+                    timer: 1500,
                     confirmButtonText: 'Cerrar',
                 });
             }
