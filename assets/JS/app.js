@@ -138,11 +138,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     title: 'Fact de Gato',
                     text: data.data[0],
-                    icon: 'info',
                     confirmButtonText: 'Cerrar',
-                    imageUrl: '../images/cat.png',
-                    imageWidth: 400,
-                    imageHeight: 200,
+                    imageUrl: './../../assets/images/cat.png',
+                    imageWidth: 200,
                     imageAlt: 'Un lindo gatito',
                 });
             } catch (error) {
@@ -161,3 +159,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+
