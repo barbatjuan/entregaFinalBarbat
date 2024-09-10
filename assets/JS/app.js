@@ -6,9 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const actualYear = new Date().getFullYear();
     footerP.innerHTML = "Todos los derechos reservados ;) " + actualYear;
 
-    // Verificar si el buscador ya está en el DOM
     if (!document.getElementById('buscador-input')) {
-        // Elementos del DOM
+
         const buscadorInput = document.createElement('input');
         buscadorInput.type = 'text';
         buscadorInput.id = 'buscador-input';
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
         mainElement.insertBefore(buscadorInput, productosContainer);
     }
 
-    // Array para almacenar productos
     let productos = [];
 
     async function obtenerProductos() {
@@ -134,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Código para Cat Facts
     const catFactBtn = document.getElementById('catFactBtn');
     if (catFactBtn) {
         catFactBtn.addEventListener('click', async () => {

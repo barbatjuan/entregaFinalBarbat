@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const productosContainer = document.getElementById('productContainer');
   mainElement.insertBefore(buscadorInput, productosContainer);
 
-  // Array para almacenar productos
   let productos = [];
 
   async function obtenerProductos() {
