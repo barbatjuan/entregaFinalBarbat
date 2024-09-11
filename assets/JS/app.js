@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const actualYear = new Date().getFullYear();
     footerP.innerHTML = "Todos los derechos reservados ;) " + actualYear;
 
+    // Crear buscador si no existe
     if (!document.getElementById('buscador-input')) {
         const buscadorInput = document.createElement('input');
         buscadorInput.type = 'text';
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let productos = [];
 
+    // Obtener productos desde la API
     async function obtenerProductos() {
         try {
             const response = await fetch('https://api.mercadolibre.com/sites/MLU/search?q=alimentomascotas');
@@ -30,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Renderizar productos en el DOM
     async function renderizarProductos() {
         productos = await obtenerProductos();
         const productosContainer = document.getElementById('productContainer');
@@ -52,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     renderizarProductos();
 
+    // Filtrar productos al buscar
     document.getElementById('buscador-input').addEventListener('input', async function () {
         const textoBusqueda = this.value.toLowerCase();
         const productosFiltrados = productos.filter(prod =>
@@ -75,63 +79,71 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Manejar clic en botones de agregar y eliminar
     document.getElementById('productContainer').addEventListener('click', (event) => {
         if (event.target && event.target.classList.contains('agregar-btn')) {
-            let productoId = event.target.getAttribute('data-id');
-            let productoItem = productos.find(p => p.id === productoId);
-
-            if (productoItem) {
-                let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-                let productoEnCarrito = carrito.find(p => p.id === productoId);
-
-                console.log('Producto agregado:', productoItem.title);
-
-                if (productoEnCarrito) {
-                    productoEnCarrito.cantidad = productoEnCarrito.cantidad + 1;
-                } else {
-                    carrito.push({ ...productoItem, cantidad: 1 });
-                }
-
-                localStorage.setItem('carrito', JSON.stringify(carrito));
-
-                Swal.fire({
-                    title: 'Producto agregado',
-                    text: `El producto ${productoItem.title} ha sido agregado al carrito.`,
-                    imageUrl: './../../assets/images/okcat.png',
-                    imageWidth: 200,
-                    imageAlt: 'Un lindo gatito',
-                    timer: 1500,
-                    confirmButtonText: 'Cerrar',
-                });
-            }
+            handleAgregarProducto(event.target.getAttribute('data-id'));
         }
 
         if (event.target && event.target.classList.contains('eliminar-btn')) {
-            let productoId = event.target.getAttribute('data-id');
+            handleEliminarProducto(event.target.getAttribute('data-id'));
+        }
+    });
+
+    // Función para manejar agregar producto
+    function handleAgregarProducto(productoId) {
+        let productoItem = productos.find(p => p.id === productoId);
+
+        if (productoItem) {
             let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
             let productoEnCarrito = carrito.find(p => p.id === productoId);
 
             if (productoEnCarrito) {
-                if (productoEnCarrito.cantidad > 1) {
-                    productoEnCarrito.cantidad -= 1;
-                } else {
-                    carrito = carrito.filter(p => p.id !== productoId);
-                }
-                localStorage.setItem('carrito', JSON.stringify(carrito));
-
-                Swal.fire({
-                    title: 'Producto eliminado',
-                    text: `El producto ${productoEnCarrito.title} ha sido eliminado del carrito.`,
-                    imageUrl: './../../assets/images/nocat.png',
-                    imageWidth: 200,
-                    imageAlt: 'Un lindo gatito',
-                    timer: 1500,
-                    confirmButtonText: 'Cerrar',
-                });
+                productoEnCarrito.cantidad += 1; // Incrementar cantidad
+            } else {
+                carrito.push({ ...productoItem, cantidad: 1 }); // Agregar producto con cantidad 1
             }
-        }
-    });
 
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+            Swal.fire({
+                title: 'Producto agregado',
+                text: `El producto ${productoItem.title} ha sido agregado al carrito.`,
+                imageUrl: './../../assets/images/okcat.png',
+                imageWidth: 200,
+                imageAlt: 'Un lindo gatito',
+                timer: 1500,
+                confirmButtonText: 'Cerrar',
+            });
+        }
+    }
+
+    // Función para manejar eliminar producto
+    function handleEliminarProducto(productoId) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let productoEnCarrito = carrito.find(p => p.id === productoId);
+
+        if (productoEnCarrito) {
+            if (productoEnCarrito.cantidad > 1) {
+                productoEnCarrito.cantidad -= 1; // Reducir la cantidad
+            } else {
+                carrito = carrito.filter(p => p.id !== productoId); // Eliminar el producto si la cantidad es 1
+            }
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+            Swal.fire({
+                title: 'Producto eliminado',
+                text: `Una unidad del producto ${productoEnCarrito.title} ha sido eliminada del carrito.`,
+                imageUrl: './../../assets/images/nocat.png',
+                imageWidth: 200,
+                imageAlt: 'Un lindo gatito',
+                timer: 1500,
+                confirmButtonText: 'Cerrar',
+            });
+        }
+    }
+
+    // Manejar clic en botón de hecho de gato
     const catFactBtn = document.getElementById('catFactBtn');
     if (catFactBtn) {
         catFactBtn.addEventListener('click', async () => {

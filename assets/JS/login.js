@@ -3,6 +3,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const loginContainer = document.getElementById('login-container');
     const mainContent = document.getElementById('main-content');
 
+    // Verificar si el usuario está autenticado
+    const loggedIn = localStorage.getItem('loggedIn') === 'true';
+
+    if (loggedIn) {
+        // Usuario autenticado, mostrar contenido principal
+        loginContainer.style.display = 'none';
+        mainContent.style.display = 'block';
+    } else {
+        // Usuario no autenticado, mostrar formulario de inicio de sesión
+        loginContainer.style.display = 'flex';
+        mainContent.style.display = 'none';
+    }
+
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -27,6 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 imageAlt: 'Logo de Raciones Caninas',
                 timer: 1500,
             }).then(() => {
+                // Guarda el estado de login en el almacenamiento local
+                localStorage.setItem('loggedIn', 'true');
                 loginContainer.style.display = 'none';
                 mainContent.style.display = 'block';
             });
