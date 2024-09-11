@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let productos = [];
 
 
+    const sonidoCatFact = new Audio('./../../assets/sounds/Cat_1.wav');
+
     async function obtenerProductos() {
         try {
             const response = await fetch('https://api.mercadolibre.com/sites/MLU/search?q=alimentomascotas');
@@ -31,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
             return [];
         }
     }
-
 
     async function renderizarProductos() {
         productos = await obtenerProductos();
@@ -55,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     renderizarProductos();
 
-
     document.getElementById('buscador-input').addEventListener('input', async function () {
         const textoBusqueda = this.value.toLowerCase();
         const productosFiltrados = productos.filter(prod =>
@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
             productosContainer.appendChild(productoDiv);
         });
     });
-
 
     document.getElementById('productContainer').addEventListener('click', (event) => {
         if (event.target && event.target.classList.contains('agregar-btn')) {
@@ -147,6 +146,9 @@ document.addEventListener('DOMContentLoaded', function () {
             try {
                 const response = await fetch('https://meowfacts.herokuapp.com/');
                 const data = await response.json();
+
+                sonidoCatFact.play();
+
                 Swal.fire({
                     title: 'Fact de Gato',
                     text: data.data[0],

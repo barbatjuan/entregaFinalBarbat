@@ -92,12 +92,13 @@ h1:hover {
 .productoItem:hover .producto-img {
   filter: brightness(1.1);
   transform: scale(1.05);
+  transform: translateY(-10px);
 }
 
 button.agregar-btn,
 button.eliminar-btn {
   padding: 0.6rem 1.2rem;
-  background: linear-gradient(45deg, #006400, #004e00);
+  background: linear-gradient(45deg, #001353, #0235a5);
   color: #e0e0e0;
   border-radius: 5px;
   font-size: 1rem;
@@ -107,12 +108,12 @@ button.eliminar-btn {
 
 button.agregar-btn:hover,
 button.eliminar-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 button.eliminar-btn {
-  background: linear-gradient(45deg, #a70000, #5a1616);
+  background: linear-gradient(45deg, #252525, #494949);
 }
 
 .productoItem .badge {
