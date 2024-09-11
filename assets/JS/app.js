@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
     footerP.innerHTML = "Todos los derechos reservados ;) " + actualYear;
 
     if (!document.getElementById('buscador-input')) {
-
         const buscadorInput = document.createElement('input');
         buscadorInput.type = 'text';
         buscadorInput.id = 'buscador-input';
@@ -85,14 +84,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
                 let productoEnCarrito = carrito.find(p => p.id === productoId);
 
+                console.log('Producto agregado:', productoItem.title);
+
                 if (productoEnCarrito) {
-                    productoEnCarrito.cantidad = (productoEnCarrito.cantidad || 1) + 1;
+                    productoEnCarrito.cantidad = productoEnCarrito.cantidad + 1;
                 } else {
                     carrito.push({ ...productoItem, cantidad: 1 });
                 }
+
                 localStorage.setItem('carrito', JSON.stringify(carrito));
 
-                // producto agregado
                 Swal.fire({
                     title: 'Producto agregado',
                     text: `El producto ${productoItem.title} ha sido agregado al carrito.`,
@@ -118,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 localStorage.setItem('carrito', JSON.stringify(carrito));
 
-                // Mostrar SweetAlert para producto eliminado
                 Swal.fire({
                     title: 'Producto eliminado',
                     text: `El producto ${productoEnCarrito.title} ha sido eliminado del carrito.`,
@@ -162,5 +162,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-
-
