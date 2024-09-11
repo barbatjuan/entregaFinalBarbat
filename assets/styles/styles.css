@@ -282,7 +282,6 @@ a {
   max-width: 800px;
 }
 
-/* Estilo para el formulario de contacto */
 .contact-form h2 {
   font-family: "Poppins", sans-serif;
   color: #363636;
@@ -329,7 +328,6 @@ a {
   background-color: #470000;
 }
 
-/* Estilo del contenedor del mapa */
 .map-container {
   position: relative;
   width: 100%;
@@ -342,7 +340,6 @@ a {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo del iframe dentro del contenedor */
 .map-container iframe {
   position: absolute;
   top: 0;
@@ -355,7 +352,6 @@ a {
   padding: 0 0 0 0;
 }
 
-/* Estilo del footer con la información de contacto en dos columnas */
 .footer-info {
   background-color: #303030;
   padding: 20px;
@@ -365,7 +361,6 @@ a {
   margin-top: 0px;
 }
 
-/* Contenedor para las columnas de información de contacto */
 .footer-info .contact-details {
   display: flex;
   justify-content: space-between;
@@ -376,18 +371,6 @@ a {
 .footer-info .contact-details div {
   flex: 1;
   min-width: 200px;
-}
-
-/* Ajustes para pantallas pequeñas */
-@media (max-width: 768px) {
-  .footer-info .contact-details {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-info .contact-details div {
-    margin-bottom: 20px;
-  }
 }
 
 .bodyContact {
@@ -409,14 +392,86 @@ a {
 
 #carritoContainer {
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
+  background-color: #ffffff;
+  border-radius: 16px;
   margin-top: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 20px auto;
 }
+
 .producto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
 }
+
 .producto:last-child {
   border-bottom: none;
+}
+
+.producto img {
+  width: 80px;
+  border-radius: 8px;
+  margin-right: 15px;
+
+  .producto h3 {
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .producto .precio {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #007b00;
+  }
+
+  .producto .eliminar-btn {
+    background-color: #ff4c4c;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+
+  .producto .eliminar-btn:hover {
+    background-color: #d43f3f;
+  }
+
+  @media (max-width: 768px) {
+    .footer-info .contact-details {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-info .contact-details div {
+      margin-bottom: 20px;
+    }
+
+    #carritoContainer {
+      padding: 15px;
+      margin: 15px;
+    }
+
+    .producto {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .producto img {
+      margin-bottom: 10px;
+    }
+
+    .producto h3 {
+      font-size: 0.9rem;
+    }
+
+    .producto .precio {
+      font-size: 1rem;
+    }
+  }
 }

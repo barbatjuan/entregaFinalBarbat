@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const actualYear = new Date().getFullYear();
   footerP.innerHTML = "Todos los derechos reservados ;) " + actualYear;
 
-  // Elementos del DOM
   const buscadorInput = document.createElement('input');
   buscadorInput.type = 'text';
   buscadorInput.id = 'buscador-input';

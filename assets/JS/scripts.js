@@ -13,7 +13,7 @@ function mostrarCarrito() {
 
             div.innerHTML = `
                 <p>${item.title} - $${item.price} (Cantidad: ${item.cantidad})</p>
-                <button class="eliminar-btn" data-id="${item.id}">Eliminar 1 Unidad</button>
+                <button class="eliminar-btn" data-id="${item.id}">X</button>
             `;
 
             carritoContainer.appendChild(div);

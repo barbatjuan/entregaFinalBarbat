@@ -3,15 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const loginContainer = document.getElementById('login-container');
     const mainContent = document.getElementById('main-content');
 
-    // Verificar si el usuario está autenticado
     const loggedIn = localStorage.getItem('loggedIn') === 'true';
 
     if (loggedIn) {
-        // Usuario autenticado, mostrar contenido principal
         loginContainer.style.display = 'none';
         mainContent.style.display = 'block';
     } else {
-        // Usuario no autenticado, mostrar formulario de inicio de sesión
+
         loginContainer.style.display = 'flex';
         mainContent.style.display = 'none';
     }
@@ -23,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = document.getElementById('password').value;
 
         if (username === 'juan' && password === 'juan') {
-            // Login exitoso
+
             Swal.fire({
                 title: 'Éxito',
                 text: 'Inicio de sesión exitoso.',
@@ -40,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 imageAlt: 'Logo de Raciones Caninas',
                 timer: 1500,
             }).then(() => {
-                // Guarda el estado de login en el almacenamiento local
+
                 localStorage.setItem('loggedIn', 'true');
                 loginContainer.style.display = 'none';
                 mainContent.style.display = 'block';

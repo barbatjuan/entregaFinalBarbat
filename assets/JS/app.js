@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const actualYear = new Date().getFullYear();
     footerP.innerHTML = "Todos los derechos reservados ;) " + actualYear;
 
-    // Crear buscador si no existe
+
     if (!document.getElementById('buscador-input')) {
         const buscadorInput = document.createElement('input');
         buscadorInput.type = 'text';
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let productos = [];
 
-    // Obtener productos desde la API
+
     async function obtenerProductos() {
         try {
             const response = await fetch('https://api.mercadolibre.com/sites/MLU/search?q=alimentomascotas');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Renderizar productos en el DOM
+
     async function renderizarProductos() {
         productos = await obtenerProductos();
         const productosContainer = document.getElementById('productContainer');
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     renderizarProductos();
 
-    // Filtrar productos al buscar
+
     document.getElementById('buscador-input').addEventListener('input', async function () {
         const textoBusqueda = this.value.toLowerCase();
         const productosFiltrados = productos.filter(prod =>
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Manejar clic en botones de agregar y eliminar
+
     document.getElementById('productContainer').addEventListener('click', (event) => {
         if (event.target && event.target.classList.contains('agregar-btn')) {
             handleAgregarProducto(event.target.getAttribute('data-id'));
@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Función para manejar agregar producto
     function handleAgregarProducto(productoId) {
         let productoItem = productos.find(p => p.id === productoId);
 
@@ -99,9 +98,9 @@ document.addEventListener('DOMContentLoaded', function () {
             let productoEnCarrito = carrito.find(p => p.id === productoId);
 
             if (productoEnCarrito) {
-                productoEnCarrito.cantidad += 1; // Incrementar cantidad
+                productoEnCarrito.cantidad += 1;
             } else {
-                carrito.push({ ...productoItem, cantidad: 1 }); // Agregar producto con cantidad 1
+                carrito.push({ ...productoItem, cantidad: 1 });
             }
 
             localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -118,16 +117,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Función para manejar eliminar producto
     function handleEliminarProducto(productoId) {
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         let productoEnCarrito = carrito.find(p => p.id === productoId);
 
         if (productoEnCarrito) {
             if (productoEnCarrito.cantidad > 1) {
-                productoEnCarrito.cantidad -= 1; // Reducir la cantidad
+                productoEnCarrito.cantidad -= 1;
             } else {
-                carrito = carrito.filter(p => p.id !== productoId); // Eliminar el producto si la cantidad es 1
+                carrito = carrito.filter(p => p.id !== productoId);
             }
             localStorage.setItem('carrito', JSON.stringify(carrito));
 
@@ -143,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Manejar clic en botón de hecho de gato
     const catFactBtn = document.getElementById('catFactBtn');
     if (catFactBtn) {
         catFactBtn.addEventListener('click', async () => {
