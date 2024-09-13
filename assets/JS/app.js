@@ -123,13 +123,18 @@ document.addEventListener('DOMContentLoaded', function () {
     function showCart() {
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         let carritoText = carrito.length === 0 ? 'No hay productos en el carrito.' : '';
+        let total = 0;
 
         carrito.forEach(item => {
             carritoText += `<p>${item.title} - $${item.price} (Cantidad: ${item.cantidad})</p>`;
+            total += item.price * item.cantidad;
         });
 
+        carritoText += `<p><strong>Total: $${total.toFixed(2)}</strong></p>`;
         Swal.fire({
             title: 'Carrito',
+            imageUrl: './../../assets/images/animal (1).png',
+            imageWidth: 150,
             html: carritoText,
             confirmButtonText: 'Cerrar'
         });
