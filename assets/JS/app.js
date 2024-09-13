@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+
     let titulo = document.getElementById("titulo");
     titulo.innerHTML = "Raciones Caninas Uruguay";
 
     let footerP = document.getElementById("footer");
     const actualYear = new Date().getFullYear();
     footerP.innerHTML = "Todos los derechos reservados ;) " + actualYear;
-
 
     if (!document.getElementById('buscador-input')) {
         const buscadorInput = document.createElement('input');
@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     let productos = [];
-
 
     const sonidoCatFact = new Audio('./../../assets/sounds/Cat_1.wav');
 
@@ -54,40 +53,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    renderizarProductos();
+    function updateCartCount() {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let totalItems = 0;
 
-    document.getElementById('buscador-input').addEventListener('input', async function () {
-        const textoBusqueda = this.value.toLowerCase();
-        const productosFiltrados = productos.filter(prod =>
-            prod.title.toLowerCase().includes(textoBusqueda)
-        );
-        const productosContainer = document.getElementById('productContainer');
-        productosContainer.innerHTML = '';
-        productosFiltrados.forEach(prod => {
-            let productoDiv = document.createElement("div");
-            productoDiv.className = "productoItem";
-            productoDiv.innerHTML = `
-                <img src="${prod.thumbnail}" alt="${prod.title}" class="producto-img" />
-                <h3>${prod.title}</h3>
-                <p>Tipo de Mascota: ${prod.category_name || 'Desconocido'}</p>
-                <p>Etapa de Vida: ${prod.condition === 'new' ? 'Nuevo' : 'Usado'}</p>
-                <p>Precio: $${prod.price}</p>
-                <button class="agregar-btn" data-id="${prod.id}">Agregar</button>
-                <button class="eliminar-btn" data-id="${prod.id}">Eliminar</button>
-            `;
-            productosContainer.appendChild(productoDiv);
+        carrito.forEach(item => {
+            totalItems += item.cantidad;
         });
-    });
 
-    document.getElementById('productContainer').addEventListener('click', (event) => {
-        if (event.target && event.target.classList.contains('agregar-btn')) {
-            handleAgregarProducto(event.target.getAttribute('data-id'));
-        }
-
-        if (event.target && event.target.classList.contains('eliminar-btn')) {
-            handleEliminarProducto(event.target.getAttribute('data-id'));
-        }
-    });
+        const cartCountElement = document.getElementById('cart-count');
+        cartCountElement.textContent = totalItems;
+    }
 
     function handleAgregarProducto(productoId) {
         let productoItem = productos.find(p => p.id === productoId);
@@ -113,6 +89,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 timer: 1500,
                 confirmButtonText: 'Cerrar',
             });
+
+            updateCartCount();
         }
     }
 
@@ -137,8 +115,64 @@ document.addEventListener('DOMContentLoaded', function () {
                 timer: 1500,
                 confirmButtonText: 'Cerrar',
             });
+
+            updateCartCount();
         }
     }
+
+    function showCart() {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let carritoText = carrito.length === 0 ? 'No hay productos en el carrito.' : '';
+
+        carrito.forEach(item => {
+            carritoText += `<p>${item.title} - $${item.price} (Cantidad: ${item.cantidad})</p>`;
+        });
+
+        Swal.fire({
+            title: 'Carrito',
+            html: carritoText,
+            confirmButtonText: 'Cerrar'
+        });
+    }
+
+    document.getElementById('productContainer').addEventListener('click', (event) => {
+        if (event.target && event.target.classList.contains('agregar-btn')) {
+            handleAgregarProducto(event.target.getAttribute('data-id'));
+        }
+
+        if (event.target && event.target.classList.contains('eliminar-btn')) {
+            handleEliminarProducto(event.target.getAttribute('data-id'));
+        }
+    });
+
+    document.querySelector('.cart-widget').addEventListener('click', showCart);
+
+    updateCartCount();
+
+    renderizarProductos();
+
+    document.getElementById('buscador-input').addEventListener('input', async function () {
+        const textoBusqueda = this.value.toLowerCase();
+        const productosFiltrados = productos.filter(prod =>
+            prod.title.toLowerCase().includes(textoBusqueda)
+        );
+        const productosContainer = document.getElementById('productContainer');
+        productosContainer.innerHTML = '';
+        productosFiltrados.forEach(prod => {
+            let productoDiv = document.createElement("div");
+            productoDiv.className = "productoItem";
+            productoDiv.innerHTML = `
+                <img src="${prod.thumbnail}" alt="${prod.title}" class="producto-img" />
+                <h3>${prod.title}</h3>
+                <p>Tipo de Mascota: ${prod.category_name || 'Desconocido'}</p>
+                <p>Etapa de Vida: ${prod.condition === 'new' ? 'Nuevo' : 'Usado'}</p>
+                <p>Precio: $${prod.price}</p>
+                <button class="agregar-btn" data-id="${prod.id}">Agregar</button>
+                <button class="eliminar-btn" data-id="${prod.id}">Eliminar</button>
+            `;
+            productosContainer.appendChild(productoDiv);
+        });
+    });
 
     const catFactBtn = document.getElementById('catFactBtn');
     if (catFactBtn) {
