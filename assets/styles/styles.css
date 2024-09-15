@@ -41,7 +41,7 @@ h1 {
 
 h1:hover {
   letter-spacing: 2px;
-  color: rgb(129, 2, 2);
+  text-shadow: 0 0 10px #e91b1b, 0 0 20px #e91b1b, 0 0 30px #e91b1b;
 }
 
 h2 {
@@ -52,8 +52,22 @@ h2 {
 
 h2:hover {
   letter-spacing: 2px;
-  color: rgb(129, 2, 2);
+  text-shadow: 0 0 5px #0577b9, 0 0 10px #0577b9, 0 0 20px #0577b9;
   font-weight: 900;
+}
+
+.h2carrito {
+  color: #bbbbbb;
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  margin-top: 1.5rem;
+  transition-duration: 1000ms;
+}
+
+.h2carrito:hover {
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px #1b6de9, 0 0 20px #1b6de9, 0 0 30px #1b6de9;
 }
 
 .logo {
@@ -61,13 +75,13 @@ h2:hover {
   margin: 30px auto 10px auto;
   max-width: 350px;
   height: auto;
-  transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease;
+  transition: transform 0.9s ease, filter 0.9s ease, box-shadow 0.9s ease;
 }
 
 .logo:hover {
   transform: scale(1.1) rotate(1deg);
   filter: brightness(1.2);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.8);
 }
 
 #buscador-input {
@@ -79,6 +93,13 @@ h2:hover {
   border: 2px solid #ddd;
   border-radius: 5px;
   font-size: 1rem;
+  transition-duration: 700ms;
+}
+#buscador-input:hover {
+  box-shadow: 0 0 5px #0577b9, 0 0 10px #0577b9, 0 0 20px #0577b9;
+}
+#buscador-input:focus {
+  box-shadow: 0 0 10px #eb1e1e, 0 0 20px #eb1e1e, 0 0 30px #eb1e1e;
 }
 
 #productContainer {
@@ -181,7 +202,7 @@ button.eliminar-btn {
 }
 
 #catFactBtn:hover {
-  background-color: #223ba7;
+  box-shadow: 0 0 5px #94d8ff, 0 0 10px #94d8ff, 0 0 20px #94d8ff;
 }
 
 footer {
@@ -205,12 +226,12 @@ footer {
 }
 
 .productoItem {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .productoItem:hover {
   transform: scale(1.1);
-  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px #0577b9, 0 0 20px #0577b9, 0 0 30px #0577b9;
 }
 
 #login-container {
@@ -422,7 +443,7 @@ a {
 
 .h2Contact:hover {
   letter-spacing: 5px;
-  color: #910000;
+  text-shadow: 0 0 10px #b90505, 0 0 10px #b90505, 0 0 20px #b90505;
   font-weight: 900;
 }
 
