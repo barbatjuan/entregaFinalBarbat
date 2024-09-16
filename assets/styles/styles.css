@@ -293,6 +293,18 @@ footer {
   color: #dfdfdf;
 }
 
+.swal2-popup {
+  box-shadow: 0 0 10px #ff2222, 0 0 20px #ff2222, 0 0 40px #ff2222;
+}
+
+.swal3-popup {
+  box-shadow: 0 0 10px #22ff77, 0 0 20px #22ff77, 0 0 40px #22ff77;
+}
+
+.swal4-popup {
+  box-shadow: 0 0 10px #2282ff, 0 0 20px #2282ff, 0 0 40px #2282ff;
+}
+
 .swal2-styled {
   background-color: #0448ad;
   color: #aaaaaa;

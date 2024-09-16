@@ -88,6 +88,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 imageAlt: 'Un lindo gatito',
                 timer: 1500,
                 confirmButtonText: 'Cerrar',
+                customClass: {
+                    popup: 'swal3-popup'
+                }
             });
 
             updateCartCount();
@@ -114,6 +117,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 imageAlt: 'Un lindo gatito',
                 timer: 1500,
                 confirmButtonText: 'Cerrar',
+                customClass: {
+                    popup: 'swal2-popup'
+                }
             });
 
             updateCartCount();
@@ -136,7 +142,10 @@ document.addEventListener('DOMContentLoaded', function () {
             imageUrl: './../../assets/images/animal (1).png',
             imageWidth: 150,
             html: carritoText,
-            confirmButtonText: 'Cerrar'
+            confirmButtonText: 'Cerrar',
+            customClass: {
+                popup: 'swal3-popup'
+            }
         });
     }
 
@@ -195,6 +204,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     imageUrl: './../../assets/images/cat.png',
                     imageWidth: 200,
                     imageAlt: 'Un lindo gatito',
+                    customClass: {
+                        popup: 'swal4-popup'
+                    }
                 });
             } catch (error) {
                 console.error('Error al obtener datos de Cat Facts:', error);
