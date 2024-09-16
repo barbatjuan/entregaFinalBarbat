@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     popup: 'swal2-popup-custom',
                     title: 'swal2-title-custom',
                     content: 'swal2-content-custom',
-                    confirmButton: 'swal2-confirm-custom'
+                    confirmButton: 'swal2-confirm-custom',
+                    popup: 'swal3-popup'
                 },
                 imageUrl: './../../assets/images/logincat.png',
                 imageWidth: 200,
@@ -54,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     popup: 'swal2-popup-custom',
                     title: 'swal2-title-custom',
                     content: 'swal2-content-custom',
-                    confirmButton: 'swal2-confirm-custom'
+                    confirmButton: 'swal2-confirm-custom',
+                    popup: 'swal2-popup'
                 },
                 imageUrl: './../../assets/images/logo rc.jpg',
                 imageWidth: 200,
